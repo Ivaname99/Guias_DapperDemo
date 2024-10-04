@@ -21,6 +21,7 @@ namespace AccesoDatos
             SqlConnection conexion = new SqlConnection(ConnectionString);
             conexion.Open();
             return conexion;
+
         }
     }
 }
