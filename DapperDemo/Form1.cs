@@ -14,6 +14,27 @@ namespace DapperDemo
     public partial class Form1 : Form
     {
         CustomerRepository customerR = new CustomerRepository();
+        private Customers CrearCliente()
+        {
+            var nuevo = new Customers
+            {
+                CustomerID = tbxCustomerID.Text,
+                CompanyName = tbxCompanyName.Text,
+                ContactName = tbxContactName.Text,
+                ContactTitle = tbxContactTitle.Text,
+                Address = tbxAddress.Text
+            };
+            return nuevo;
+        }
+        private void RellenarForm(Customers customers)
+        {
+            tbxCustomerID.Text = customers.CustomerID;
+            tbxCompanyName.Text = customers.CompanyName;
+            tbxContactName.Text = customers.ContactName;
+            tbxContactTitle.Text = customers.ContactTitle;
+            tbxAddress.Text = customers.Address;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +50,11 @@ namespace DapperDemo
         {
             var cliente = customerR.ObtenerPorId(tboxObtenerID.Text);
             dgvCustomers.DataSource = new List<Customers> { cliente };
+
+            if (cliente != null)
+            {
+                RellenarForm(cliente);
+            }
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -38,17 +64,11 @@ namespace DapperDemo
             MessageBox.Show($"{insertado} registros insertados");
         }
 
-        private Customers CrearCliente()
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-            var nuevo = new Customers
-            {
-                CustomerID = tbxCustomerID.Text,
-                CompanyName = tbxCompanyName.Text,
-                ContactName = tbxContactName.Text,
-                ContactTitle = tbxContactTitle.Text,
-                Address = tbxAddress.Text
-            };
-            return nuevo;
+            var clienteActualizado = CrearCliente();
+            var actualizados = customerR.ActualizarCliente(clienteActualizado);
+            MessageBox.Show($"{actualizados} filas actualizadas");
         }
     }
 }
