@@ -68,7 +68,16 @@ namespace DapperDemo
         {
             var clienteActualizado = CrearCliente();
             var actualizados = customerR.ActualizarCliente(clienteActualizado);
+            var cliente = customerR.ObtenerPorId(clienteActualizado.CustomerID);
+            dgvCustomers.DataSource = new List<Customers> { cliente };
             MessageBox.Show($"{actualizados} filas actualizadas");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            var cliente = customerR.EliminarCliente(tbxCustomerID.Text);
+            MessageBox.Show($"{cliente} filas afectadas");
         }
     }
 }
