@@ -76,8 +76,10 @@ namespace DapperDemo
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
-            var cliente = customerR.EliminarCliente(tbxCustomerID.Text);
-            MessageBox.Show($"{cliente} filas afectadas");
+            var eliminadas = customerR.EliminarCliente(tbxCustomerID.Text);
+            var cliente = customerR.ObtenerPorId(tbxCustomerID.Text);
+            dgvCustomers.DataSource = new List<Customers> { cliente };
+            MessageBox.Show($"{eliminadas} filas afectadas");
         }
     }
 }
