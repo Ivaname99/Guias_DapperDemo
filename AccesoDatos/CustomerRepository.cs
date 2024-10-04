@@ -55,5 +55,37 @@ namespace AccesoDatos
                 return cliente;
             }
         }
+
+        public int InsertarCliente(Customers customer)
+        {
+            using (var conexion = DataBase.GetSqlConnection())
+            {
+                String Insertar = "";
+                Insertar = Insertar + "INSERT INTO [dbo].[Customers] " + "\n";
+                Insertar = Insertar + "           ([CustomerID] " + "\n";
+                Insertar = Insertar + "           ,[CompanyName] " + "\n";
+                Insertar = Insertar + "           ,[ContactName] " + "\n";
+                Insertar = Insertar + "           ,[ContactTitle] " + "\n";
+                Insertar = Insertar + "           ,[Address]) " + "\n";
+                Insertar = Insertar + "     VALUES " + "\n";
+                Insertar = Insertar + "           (@CustomerID " + "\n";
+                Insertar = Insertar + "           ,@CompanyName " + "\n";
+                Insertar = Insertar + "           ,@ContactName " + "\n";
+                Insertar = Insertar + "           ,@ContactTitle " + "\n";
+                Insertar = Insertar + "           ,@Address)";
+
+                var insertadas = conexion.Execute(Insertar, new
+                {
+                    CustomerID = customer.CustomerID,
+                    CompanyName = customer.CompanyName,
+                    ContactName = customer.ContactName,
+                    ContactTitle = customer.ContactTitle,
+                    Address = customer.Address,
+                });
+                return insertadas;
+            }
+        }
+
+        
     }
 }
