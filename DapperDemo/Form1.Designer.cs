@@ -28,20 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dgvCustomers = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnObtenerTodos = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dgvCustomers
+            // 
+            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomers.Location = new System.Drawing.Point(12, 12);
+            this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.Size = new System.Drawing.Size(776, 280);
+            this.dgvCustomers.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 317);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // btnObtenerTodos
+            // 
+            this.btnObtenerTodos.Location = new System.Drawing.Point(343, 314);
+            this.btnObtenerTodos.Name = "btnObtenerTodos";
+            this.btnObtenerTodos.Size = new System.Drawing.Size(107, 34);
+            this.btnObtenerTodos.TabIndex = 2;
+            this.btnObtenerTodos.Text = "Obtener Todos";
+            this.btnObtenerTodos.UseVisualStyleBackColor = true;
+            this.btnObtenerTodos.Click += new System.EventHandler(this.btnObtenerTodos_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(60, 314);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnObtenerTodos);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvCustomers);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvCustomers;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnObtenerTodos;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
